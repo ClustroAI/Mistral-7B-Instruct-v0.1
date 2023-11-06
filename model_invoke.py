@@ -6,7 +6,7 @@ device = "cuda" # the device to load the model onto
 model = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1")
 tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1")
 
-def invoke():
+def invoke(input_text):
     #try:
     #    input_json = json.loads(input_text)
     #except:
@@ -25,6 +25,3 @@ def invoke():
     generated_ids = model.generate(model_inputs, max_new_tokens=1000, do_sample=True)
     decoded = tokenizer.batch_decode(generated_ids)
     return decoded[0]
-
-result = invoke()
-print(result)
